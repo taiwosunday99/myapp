@@ -1,0 +1,18 @@
+
+<mat-card>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+<mat-form-field>
+  <input matInput type="text" name="title"
+  ngModel required minlength="5" #title="ngModel" placeholder="Post Title*">
+<mat-error *ngIf="title.invalid">Please enter a post title.</mat-error>
+</mat-form-field>
+<mat-form-field hintLabel="Max 120 characters">
+<textarea matInput rows="6" name="content"
+ngModel required maxlength="120" #input #content="ngModel" placeholder="Post Content*"></textarea>
+<mat-error *ngIf="content.invalid">Post content cannot be empty..</mat-error>
+<mat-hint align="end">{{input.value?.length || 0}}/120</mat-hint>
+</mat-form-field>
+<button mat-raised-button color="accent" type="submit">Save Post</button>
+  </form>
+
+</mat-card>
